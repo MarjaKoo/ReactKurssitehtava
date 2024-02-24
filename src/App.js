@@ -2,13 +2,22 @@ import React, {useState} from 'react';
 import './App.css';
 import Laskuri from './Laskuri'
 import Viesti from './Viesti'
+import Posts from './Posts'
+import CustomerList from './CustomersList';
+import Message from './Message';
+
 
 
 const App = () => {
 
-  // App komponentin tila
+  // App-komponentin tila
 
 const [showLaskuri, setShowLaskuri] = useState(false)
+  // Statet messagen näyttämistä varten
+const [showMessage, setShowMessage] = useState(false)
+const [message, setMessage] = useState('')
+const [isPositive, setIsPositive] = useState(false)
+const [showPosts, setShowPosts] = useState(false)
 
 const huomio = () => {
   alert("Huomio!")
@@ -18,15 +27,26 @@ const huomio = () => {
     <div className="App">
       <h1>Hello from React!</h1>
 
-      {showLaskuri && <Laskuri huomio={huomio} />}
+      {showMessage && <Message message={message} isPositive={isPositive} /> }
 
-      {/* tämä ja edellinen ovat täysin samat tavat
-      {showLaskuri === true ? <Laskuri /> : null} 
-      {showLaskuri === true ? <Laskuri /> : <button>näytä</button>}  */}
+      <CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} />
+
+      {/* <Posts /> */}
 
       {showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Piilota laskuri</button>}
 
       {!showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Näytä laskuri</button>}
+
+      {showPosts && <button onClick={() => setShowPosts(!showPosts)}>Piilota postausotsikko</button>}
+
+      {!showPosts && <button onClick={() => setShowPosts(!showPosts)}>Näytä postausotsikko</button>}
+
+      {showLaskuri && <Laskuri huomio={huomio} />}
+      {showPosts && <Posts posts={Posts} />}
+
+      {/* tämä ja edellinen ovat täysin samat tavat
+      {showLaskuri === true ? <Laskuri /> : null} 
+      {showLaskuri === true ? <Laskuri /> : <button>näytä</button>}  */}       
 
       <Viesti teksti="tervehdys app komponentista" />
 
