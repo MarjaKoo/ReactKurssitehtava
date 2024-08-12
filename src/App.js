@@ -6,7 +6,11 @@ import Posts from './Posts'
 import CustomerList from './CustomersList';
 import Message from './Message';
 
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 const App = () => {
 
