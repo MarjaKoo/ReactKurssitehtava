@@ -66,6 +66,9 @@ padding-left: 10%;
   color: white;
 }
 
+#userTable{
+  margin:auto;
+}
 
 p1 {
   font-family: Arial, Helvetica, sans-serif;

@@ -4,6 +4,7 @@ import Laskuri from './Laskuri'
 import Viesti from './Viesti'
 import Posts from './Posts'
 import CustomerList from './CustomersList';
+import UserList from './UserList';
 import Message from './Message';
 
 import Navbar from 'react-bootstrap/Navbar'
@@ -31,6 +32,7 @@ const [showPosts, setShowPosts] = useState(false)
      <Navbar bg="dark" variant="dark">
       <Nav className="mr-auto">
         <Link to={'/Customers'} className='nav-link'>Customers</Link>
+        <Link to={'/Users'} className='nav-link'>Users</Link>
         <Link to={'/Laskuri'} className='nav-link'>Laskuri</Link>
         <Link to={'/Posts'} className='nav-link'>Typicode posts</Link>
       </Nav>
@@ -46,10 +48,10 @@ const [showPosts, setShowPosts] = useState(false)
           setShowMessage={setShowMessage} />}>
           </Route>
 
-          {/* <Route path="/users"
+          <Route path="/Users"
           element={<UserList setMessage={setMessage} setIsPositive={setIsPositive} 
           setShowMessage={setShowMessage} />}>
-          </Route> */}
+          </Route>
 
           <Route path="/posts"
           element={<Posts />}>
