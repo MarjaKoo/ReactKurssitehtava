@@ -7,6 +7,7 @@ import CustomerList from './CustomersList';
 import UserList from './UserList';
 import Message from './Message';
 
+
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -48,7 +49,7 @@ const [showPosts, setShowPosts] = useState(false)
           setShowMessage={setShowMessage} />}>
           </Route>
 
-          <Route path="/Users"
+          <Route path="/users"
           element={<UserList setMessage={setMessage} setIsPositive={setIsPositive} 
           setShowMessage={setShowMessage} />}>
           </Route>
