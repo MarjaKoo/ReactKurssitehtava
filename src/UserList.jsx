@@ -1,95 +1,3 @@
-// import './App.css';
-// import React, {useState, useEffect} from 'react'
-// import UserService from './services/User';
-// import UserAdd from './UserAdd';
-
-// const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
-
-//   //komponentin tilan määritys
-// const [users, setUsers] = useState([])
-// const [lisäystila, setLisäysTila] = useState(false)
-// const [muokkaustila, setMuokkausTila] = useState(false)
-// const [reload, reloadNow] = useState(false)
-// const [muokattavaUser, setMuokattavaUser] = useState(false)
-// const [search, setSearch] = useState("")
-
-
-// useEffect( () => {
-//  UserService.getAll()
-//  .then(data => {
-//     setUsers(data)
-//  })
-// },[lisäystila, reload, muokkaustila]
-// )   
-
-// //hakukentän onChange tapahtumankäsittelijä
-// const handleSearchInputChange = (event) => {
-//    setSearch(event.target.value.toLowerCase())
-// }
-
-// const editUsers = (user) => {
-// setMuokattavaUser(user)
-// setMuokkausTila(true)
-// }
-
-//   return (
-//     <>
-    
-//     <h1><nobr>Users</nobr>
-
-//             {lisäystila && <UserAdd setLisäystila={setLisäysTila}
-//             setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} />}
-            
-//             {!lisäystila && <button className='nappi' onClick={() => setLisäysTila(true)}>Add new</button>}</h1>
-
-//             <div>
-//             {!lisäystila && !muokkaustila &&
-//             <input placeholder='Search by last name' value={search} onChange={handleSearchInputChange} />
-//             }
-//            </div>
-
-//             {!lisäystila && !muokkaustila &&
-//                         <table id="userTable">
-//                         <thead >    
-//                             <th>First Name</th>
-//                             <th>Last Name</th>
-//                             <th>Email</th>
-//                             <th>Access Level</th>
-//                         </thead>
-//                         <tbody>
-
-
-//                     {users && users.map( u => 
-//                     {
-//                         const lowerCaseName = u.lastName.toLowerCase()
-//                         if (lowerCaseName.indexOf(search) > -1) {
-//                     return(
-//                         <tr key={u.userId}>
-//                             <td>{u.firstName}</td>
-//                             <td>{u.lastName}</td>
-//                             <td>{u.email}</td>
-//                             <td>{u.accesslevelId}</td>
-//                         </tr>                      
-                               
-                    
-//                 )
-//                 }
-//                 }
-//                 )
-//                 }   
-//                 </tbody>
-//                 </table>
-
-                
-
-//               }
-//    </>
-//   )
-//           }
-          
-
-// export default UserList
-
 import './App.css';
 import React, {useState, useEffect} from 'react'
 import UserService from './services/User';
@@ -101,13 +9,13 @@ import UserEdit from './UserEdit';
 const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
 
   //komponentin tilan määritys
-  const [users, setUsers] = useState([])
-  const [näytäUsers, setNäytäUsers] = useState(false)
-  const [lisäystila, setLisäysTila] = useState(false)
-  const [muokkaustila, setMuokkausTila] = useState(false)
-  const [reload, reloadNow] = useState(false)
-  const [muokattavaUser, setMuokattavaUser] = useState(false)
-  const [search, setSearch] = useState("")
+const [users, setUsers] = useState([])
+const [näytäUsers, setNäytäUsers] = useState(false)
+const [lisäystila, setLisäysTila] = useState(false)
+const [muokkaustila, setMuokkausTila] = useState(false)
+const [reload, reloadNow] = useState(false)
+const [muokattavaUser, setMuokattavaUser] = useState(false)
+const [search, setSearch] = useState("")
 
 
 useEffect( () => {
@@ -138,11 +46,11 @@ setMuokkausTila(true)
             
             {!lisäystila && <button className='nappi' onClick={() => setLisäysTila(true)}>Add new</button>}</h1>
 
-            { <div>
+            <div>
             {!lisäystila && !muokkaustila &&
             <input placeholder='Search by user name' value={search} onChange={handleSearchInputChange} />
             }
-           </div> }
+           </div>
 
             {lisäystila && <UserAdd setLisäystila={setLisäysTila}
             setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
@@ -156,7 +64,7 @@ setMuokkausTila(true)
             {
             !lisäystila && !muokkaustila && näytäUsers && users && users.map( u => 
               {
-                const lowerCaseName = u.username.toLowerCase()
+                const lowerCaseName = u.firstName.toLowerCase()
                 if (lowerCaseName.indexOf(search) > -1) {
               return(
             <User key={u.userId} user={u} reloadNow={reloadNow} reload={reload}
@@ -168,11 +76,8 @@ setMuokkausTila(true)
           }
         }
           )
-           } 
-              
+           }   
    </>
-
-
   )
           }
           
