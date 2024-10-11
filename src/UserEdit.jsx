@@ -9,29 +9,32 @@ const UserEdit = ({setMuokkaustila, setIsPositive, setShowMessage, setMessage, m
   //komponentin tilan määritys
 
 const [newUserId, setNewUserId] = useState(muokattavaUser.UserId)
-const [newUserName, setNewUserName] = useState(muokattavaUser.UserName)
-const [newFirstName, setNewFirstName] = useState(muokattavaUser.firstname)
-const [newLastName, setNewLastName] = useState(muokattavaUser.lastname)
+const [newUserName, setNewUserName] = useState(muokattavaUser.userName)
+const [newFirstName, setNewFirstName] = useState(muokattavaUser.firstName)
+const [newLastName, setNewLastName] = useState(muokattavaUser.lastName)
 const [newEmail, setNewEmail] = useState(muokattavaUser.email)
-const [newAccesslevelId, setNewAccesslevelId] = useState(muokattavaUser.accesslevelid)
+const [newPassword, setNewPassword] = useState(muokattavaUser.Password)
+const [newAccesslevelId, setNewAccesslevelId] = useState(muokattavaUser.accesslevelId)
+
 
 const handleSubmit = (event) => {
         event.preventDefault()
         var newUser = {
         UserId: newUserId,
-        UserName: newUserName,
-        firstname: newFirstName,
-        lastname: newLastName,
+        userName: newUserName,
+        firstName: newFirstName,
+        lastName: newLastName,
         email: newEmail,
-        accesslevelid: newAccesslevelId
-    }
+        Password: newPassword,
+        accesslevelId: newAccesslevelId
+            }
 
 
 
         UserService.update(newUser)
         .then(response => {
             if (response.status === 200) {
-                setMessage("Edited user: " + newUser.UserName)
+                setMessage("Edited user: " + newUser.userName)
                 setIsPositive(true)
                 setShowMessage(true)
 
@@ -44,7 +47,7 @@ const handleSubmit = (event) => {
 
             })
             .catch(error => {
-                setMessage("Error")
+                setMessage("virhe")
                 setIsPositive(false)
                 setShowMessage(true)
                 setTimeout(() => {
@@ -92,6 +95,13 @@ const handleSubmit = (event) => {
             <div>
         <input type='text' value={newEmail} placeholder='Email' onChange={({target}) => setNewEmail(target.value)} />
         </div>
+        
+        <div>
+        <label>Password:</label>
+        </div>
+            <div>
+        <input type='text' value={newPassword} placeholder='Password' onChange={({target}) => setNewPassword(target.value)} />
+        </div> 
 
         <div>
         <label>Accesslevel Id:</label>
@@ -100,7 +110,7 @@ const handleSubmit = (event) => {
         <input type='text' value={newAccesslevelId} placeholder='Accesslevel Id' onChange={({target}) => setNewAccesslevelId(target.value)} />
         </div>      
 
-      
+             
 
         <input type='submit' value='save'/>
         <input type='button' value='back' onClick={() => setMuokkaustila(false)} />

@@ -47,6 +47,15 @@ border-radius: 30px;
 padding-left: 10%;
 }
 
+.userDetails{
+  border-style: solid;
+  width: 40%;
+  margin: auto;
+  margin-bottom: 50px;
+  border-radius: 30px;
+  padding-left: 10%;
+  }
+
 .posts {
   margin:auto;
   background-color: gainsboro;
