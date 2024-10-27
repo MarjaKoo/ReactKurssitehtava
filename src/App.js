@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Laskuri from './Laskuri'
 import Viesti from './Viesti'
@@ -6,6 +6,7 @@ import Posts from './Posts'
 import CustomerList from './CustomersList';
 import UserList from './UserList';
 import Message from './Message';
+import Login from './Login';
 
 
 import Navbar from 'react-bootstrap/Navbar'
@@ -20,14 +21,34 @@ const App = () => {
 
 const [showLaskuri, setShowLaskuri] = useState(false)
   // Statet messagen näyttämistä varten
-const [showMessage, setShowMessage] = useState(false)
 const [message, setMessage] = useState('')
-const [isPositive, setIsPositive] = useState(false)
-const [showPosts, setShowPosts] = useState(false)
+const [isPositive, setIsPositive] = useState(true)
+const [showMessage, setShowMessage] = useState('')
+const [loggedInUser, setLoggedInUser] = useState('')
 
+useEffect(() => {
+  let storedUser = localStorage.getItem("username")
+  if (storedUser !== null) {
+    setLoggedInUser(storedUser)
+  }
+},[])
+
+
+// Logout napin tapahtumankäsittelijä
+const logout = () => {
+  localStorage.clear()
+  setLoggedInUser('')
+}
  
   return (
     <div className="App">
+
+{!loggedInUser && <Login setMessage={setMessage} setIsPositive={setIsPositive} 
+                setShowMessage={setShowMessage} setLoggedInUser={setLoggedInUser} />}
+
+{ loggedInUser && 
+
+
       <Router>
 
      <Navbar bg="dark" variant="dark">
@@ -36,6 +57,7 @@ const [showPosts, setShowPosts] = useState(false)
         <Link to={'/Users'} className='nav-link'>Users</Link>
         <Link to={'/Laskuri'} className='nav-link'>Laskuri</Link>
         <Link to={'/Posts'} className='nav-link'>Typicode posts</Link>
+        <button onClick={() => logout()}>Logout</button>
       </Nav>
      </Navbar>
 
@@ -64,6 +86,7 @@ const [showPosts, setShowPosts] = useState(false)
         
         </Routes>
       </Router>
+}
     </div>
 
       
@@ -72,7 +95,7 @@ const [showPosts, setShowPosts] = useState(false)
 
       
    
-  );
+  )
 }
 
 export default App;

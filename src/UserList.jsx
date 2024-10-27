@@ -111,6 +111,11 @@ const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
 
 
 useEffect( () => {
+
+  const token = localStorage.getItem('token')
+  UserService
+      .setToken(token)
+
  UserService.getAll()
  .then(data => {
     setUsers(data)
