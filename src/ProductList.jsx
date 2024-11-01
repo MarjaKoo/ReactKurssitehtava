@@ -1,44 +1,44 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
-import UserService from './services/User';
-import User from './User';
-import UserAdd from './UserAdd';
-import UserEdit from './UserEdit';
+import ProductService from './services/Product';
+import Product from './Product';
+import ProductAdd from './ProdcutAdd';
+import ProductEdit from './ProductEdit';
 
 
-const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
+const ProductList = ({setIsPositive, setShowMessage, setMessage}) => {
 
   //komponentin tilan määritys
-const [users, setUsers] = useState([])
-const [näytäUsers, setNäytäUsers] = useState(false)
+const [products, setProducts] = useState([])
+const [näytäProducts, setNäytäProducts] = useState(false)
 const [lisäystila, setLisäysTila] = useState(false)
 const [muokkaustila, setMuokkausTila] = useState(false)
 const [reload, reloadNow] = useState(false)
-const [muokattavaUser, setMuokattavaUser] = useState(false)
+const [muokattavaProduct, setMuokattavaProduct] = useState(false)
 const [search, setSearch] = useState("")
 
 
 useEffect( () => {
 
   const token = localStorage.getItem('token')
-  UserService
+  ProductService
       .setToken(token)
       
- UserService.getAll()
+ ProductService.getAll()
  .then(data => {
-    setUsers(data)
+    setProducts(data)
  })
 },[lisäystila, reload, muokkaustila]
 )   
 
 //hakukentän onChange tapahtumankäsittelijä
 const handleSearchInputChange = (event) => {
-  setNäytäUsers(true)
+  setNäytäProducts(true)
   setSearch(event.target.value.toLowerCase())
 }
 
-const editUser = (user) => {
-setMuokattavaUser(user)
+const editProduct = (product) => {
+setMuokattavaProduct(product)
 setMuokkausTila(true)
 }
 
@@ -46,36 +46,35 @@ setMuokkausTila(true)
     <>
     
     <h1><nobr style={{ cursor: 'pointer' }}
-            onClick={() => setNäytäUsers(!näytäUsers)}>Users</nobr>
+            onClick={() => setNäytäProducts(!näytäProducts)}>Products</nobr>
 
             
             {!lisäystila && <button className='nappi' onClick={() => setLisäysTila(true)}>Add new</button>}</h1>
 
             <div>
             {!lisäystila && !muokkaustila &&
-            <input placeholder='Search by user name' value={search} onChange={handleSearchInputChange} />
+            <input placeholder='Search by product name' value={search} onChange={handleSearchInputChange} />
             }
            </div>
 
-            {lisäystila && <UserAdd setLisäystila={setLisäysTila}
+            {lisäystila && <ProductAdd setLisäystila={setLisäysTila}
             setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
             />}
 
-            {muokkaustila && <UserEdit setMuokkaustila={setMuokkausTila}
+            {muokkaustila && <ProductEdit setMuokkaustila={setMuokkausTila}
             setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-            muokattavaUser={muokattavaUser}
+            muokattavaProduct={muokattavaProduct}
             />}
             
             {
-      
-            !lisäystila && !muokkaustila && näytäUsers && users && users.map( u => 
+            !lisäystila && !muokkaustila && näytäProducts && products && products.map( p => 
               {
-                const lowerCaseName = u.firstName.toLowerCase()
+                const lowerCaseName = p.productName.toLowerCase()
                 if (lowerCaseName.indexOf(search) > -1) {
               return(
-            <User key={u.userId} user={u} reloadNow={reloadNow} reload={reload}
+            <Customer key={p.productId} product={p} reloadNow={reloadNow} reload={reload}
             setIsPositive={setIsPositive} setShowMessage={setShowMessage} setMessage={setMessage}
-            editUser={editUser}
+            editProduct={editProduct}
             />
             
            )
@@ -88,4 +87,4 @@ setMuokkausTila(true)
           }
           
 
-export default UserList
+export default ProductList

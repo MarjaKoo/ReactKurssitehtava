@@ -5,6 +5,7 @@ import Viesti from './Viesti'
 import Posts from './Posts'
 import CustomerList from './CustomersList';
 import UserList from './UserList';
+import ProductList from './ProductList';  
 import Message from './Message';
 import Login from './Login';
 
@@ -55,6 +56,7 @@ const logout = () => {
       <Nav className="mr-auto">
         <Link to={'/Customers'} className='nav-link'>Customers</Link>
         <Link to={'/Users'} className='nav-link'>Users</Link>
+        <Link to={'/Products'} className='nav-link'>Products</Link>
         <Link to={'/Laskuri'} className='nav-link'>Laskuri</Link>
         <Link to={'/Posts'} className='nav-link'>Typicode posts</Link>
         <button onClick={() => logout()}>Logout</button>
@@ -76,6 +78,11 @@ const logout = () => {
           setShowMessage={setShowMessage} />}>
           </Route>
 
+          <Route path="/products"
+          element={<ProductList setMessage={setMessage} setIsPositive={setIsPositive} 
+          setShowMessage={setShowMessage} />}>
+          </Route>
+
           <Route path="/posts"
           element={<Posts />}>
           </Route>
@@ -87,13 +94,7 @@ const logout = () => {
         </Routes>
       </Router>
 }
-    </div>
-
-      
-
-
-
-      
+    </div>      
    
   )
 }
