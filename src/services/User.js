@@ -34,7 +34,14 @@ const update = (object) => {
     const config = {
         headers: { Authorization: token },
     }
-    return axios.put(`${baseUrl}/${object.UserId}`, object, config)
+    return axios.put(`${baseUrl}/${object.userId}`, object, config)
 }
+
+// const update = (object) => {
+//     const config = {
+//         headers: { Authorization: token },
+//     }
+//     return axios.put(`${baseUrl}/${object.UserId}`, object, config)
+// }
 
 export default { getAll, create, remove, update, setToken }

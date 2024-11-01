@@ -124,24 +124,24 @@ const UserEdit = ({setMuokkaustila, setIsPositive, setShowMessage, setMessage, m
 
   //komponentin tilan määritys
 
-const [newUserId, setNewUserId] = useState(muokattavaUser.UserId)
+const [newUserId, setNewUserId] = useState(muokattavaUser.userId)
 const [newUserName, setNewUserName] = useState(muokattavaUser.userName)
 const [newFirstName, setNewFirstName] = useState(muokattavaUser.firstName)
 const [newLastName, setNewLastName] = useState(muokattavaUser.lastName)
 const [newEmail, setNewEmail] = useState(muokattavaUser.email)
-const [newPassword, setNewPassword] = useState(muokattavaUser.Password)
+const [newPassword, setNewPassword] = useState(muokattavaUser.password)
 const [newAccesslevelId, setNewAccesslevelId] = useState(muokattavaUser.accesslevelId)
 
 
 const handleSubmit = (event) => {
         event.preventDefault()
         var newUser = {
-        UserId: newUserId,
+        userId: newUserId,
         userName: newUserName,
         firstName: newFirstName,
         lastName: newLastName,
         email: newEmail,
-        Password: newPassword,
+        password: newPassword,
         accesslevelId: newAccesslevelId
             }
 
