@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import UserService from './services/User'
 import UserList from './UserList';
 
-// props on nimeltään customer
+// props on nimeltään user
 const User = ({user, editUser, setIsPositive, setShowMessage, setMessage, reload, reloadNow}) => {
 
   //komponentin tilan määritys
@@ -74,7 +74,7 @@ const deleteUser = (user) => {
     <div className='userDiv'>
 
     <h4 onClick={() => setNäytäDetails(!näytäDetails)}>
-    {user.firstName} </h4>
+    {user.firstName}</h4>
     
     {/* {/// tämä vaihtoehtona
     onMouseEnter={() => setNäytäDetails(true)}

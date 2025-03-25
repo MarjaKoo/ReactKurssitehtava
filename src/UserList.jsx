@@ -5,8 +5,8 @@ import User from './User';
 import UserAdd from './UserAdd';
 import UserEdit from './UserEdit';
 
-
-const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
+const UserList = ({setIsPositive, setShowMessage, setMessage}) => 
+    {
 
   //komponentin tilan määritys
 const [users, setUsers] = useState([])
@@ -18,18 +18,20 @@ const [muokattavaUser, setMuokattavaUser] = useState(false)
 const [search, setSearch] = useState("")
 
 
+
 useEffect( () => {
 
   const token = localStorage.getItem('token')
   UserService
-      .setToken(token)
-      
+      .setToken(token) 
+
  UserService.getAll()
  .then(data => {
     setUsers(data)
  })
 },[lisäystila, reload, muokkaustila]
-)   
+)  
+ 
 
 //hakukentän onChange tapahtumankäsittelijä
 const handleSearchInputChange = (event) => {
@@ -48,7 +50,7 @@ setMuokkausTila(true)
     <h1><nobr style={{ cursor: 'pointer' }}
             onClick={() => setNäytäUsers(!näytäUsers)}>Users</nobr>
 
-            
+                       
             {!lisäystila && <button className='nappi' onClick={() => setLisäysTila(true)}>Add new</button>}</h1>
 
             <div>
@@ -71,11 +73,13 @@ setMuokkausTila(true)
             !lisäystila && !muokkaustila && näytäUsers && users && users.map( u => 
               {
                 const lowerCaseName = u.firstName.toLowerCase()
-                if (lowerCaseName.indexOf(search) > -1) {
+                if (lowerCaseName.indexOf(search) > -1){
               return(
             <User key={u.userId} user={u} reloadNow={reloadNow} reload={reload}
             setIsPositive={setIsPositive} setShowMessage={setShowMessage} setMessage={setMessage}
             editUser={editUser}
+
+            
             />
             
            )
@@ -85,7 +89,10 @@ setMuokkausTila(true)
            }   
    </>
   )
-          }
-          
+
+  
+  
+          }   
+
 
 export default UserList

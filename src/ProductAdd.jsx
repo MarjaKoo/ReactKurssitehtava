@@ -8,7 +8,7 @@ const ProductAdd = ({setLisäystila, setIsPositive, setShowMessage, setMessage }
 
   //komponentin tilan määritys
 
-const [newProductId, setNewProductId] = useState('')
+// const [newProductId, setNewProductId] = useState('')
 const [newProductName, setNewProductName] = useState('')
 const [newSupplierId, setNewSupplierId] = useState('')
 const [newCategoryId, setNewCategoryId] = useState('')
@@ -22,7 +22,7 @@ const [newDiscontinued, setNewDiscontinued] = useState('')
 const handleSubmit = (event) => {
         event.preventDefault()
         var newProduct = {
-        productId: newProductId.toUpperCase(),
+        // productId: newProductId.toUpperCase(),
         productName: newProductName,
         supplierId: newSupplierId,
         categoryId: newCategoryId,
@@ -31,12 +31,15 @@ const handleSubmit = (event) => {
         unitsInStock: newUnitsInStock,
         unitsOnOrder: newUnitsOnOrder,
         reorderLevel: newReorderLevel,
-        discontinued: newDiscontinued
+        discontinued: false
     }
+
+
         ProductService.create(newProduct)
         .then(response => {
             if (response.status === 200) {
                 setMessage("Added new product: " + newProduct.productName)
+                // setMessage(`Added new product: " ${newProduct.productName}`)
                 setIsPositive(true)
                 setShowMessage(true)
 
@@ -66,9 +69,13 @@ const handleSubmit = (event) => {
     <h2>Product add</h2>
 
     <form onSubmit={handleSubmit}>
-        <div>
+        {/* <div>
         <input type='text' value={newProductId} placeholder='ID with 5 capital letters'  maxLength="5" minLength="5" onChange={({target}) => setNewProductId(target.value)} required/>
-        </div>
+        </div> */}
+
+        {/* <div>
+        <input type='text' value={newProductId} disabled/>
+        </div> */}
 
         <div>
         <input type='text' value={newProductName} placeholder='ProductName' onChange={({target}) => setNewProductName(target.value)} required />
@@ -102,9 +109,9 @@ const handleSubmit = (event) => {
         <input type='text' value={newReorderLevel} placeholder='Reorder Level' onChange={({target}) => setNewReorderLevel(target.value)} />
         </div>
 
-        <div>
+        {/* <div>
         <input type='text' value={newDiscontinued} placeholder='Discontinued' onChange={({target}) => setNewDiscontinued(target.value)} />
-        </div>
+        </div> */}
 
         <input type='submit' value='save'/>
         <input type='button' value='back' onClick={() => setLisäystila(false)} />

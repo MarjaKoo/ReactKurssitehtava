@@ -47,10 +47,20 @@ border-radius: 30px;
 padding-left: 10%;
 }
 
-.productDetails{
+.userDetails{
   background-color: bisque;
   border-style: solid;
   width: 40%;
+  margin: auto;
+  margin-bottom: 50px;
+  border-radius: 30px;
+  padding-left: 10%;
+  }
+
+.productDetails{
+  background-color: bisque;
+  border-style: solid;
+  width: 70%;
   margin: auto;
   margin-bottom: 50px;
   border-radius: 30px;

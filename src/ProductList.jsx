@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState, useEffect} from 'react'
 import ProductService from './services/Product';
 import Product from './Product';
-import ProductAdd from './ProdcutAdd';
+import ProductAdd from './ProductAdd';
 import ProductEdit from './ProductEdit';
 
 
@@ -72,7 +72,7 @@ setMuokkausTila(true)
                 const lowerCaseName = p.productName.toLowerCase()
                 if (lowerCaseName.indexOf(search) > -1) {
               return(
-            <Customer key={p.productId} product={p} reloadNow={reloadNow} reload={reload}
+            <Product key={p.productId} product={p} reloadNow={reloadNow} reload={reload}
             setIsPositive={setIsPositive} setShowMessage={setShowMessage} setMessage={setMessage}
             editProduct={editProduct}
             />

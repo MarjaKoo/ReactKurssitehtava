@@ -1,4 +1,5 @@
 import axios from "axios"
+import Product from "../Product"
 
 const baseUrl = "https://localhost:7226/api/Products"
 
@@ -25,6 +26,7 @@ const create = newProduct => {
         headers: { Authorization: token },
     }
     return axios.post(baseUrl, newProduct, config)
+    // return axios.post(`${baseUrl}/${Product.newProduct}`, newProduct, config)
 }
 
 

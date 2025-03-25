@@ -90,14 +90,14 @@ const deleteProduct = (product) => {
                     <tr>
                         <td>{product.productId}</td>
                         <td>{product.productName}</td>
-                        <td>{product.SupplierId}</td>
-                        <td>{product.CategoryId}</td>
-                        <td>{product.QuantityPerUnit}</td>
-                        <td>{product.UnitPrice}</td>
-                        <td>{product.UnitsInStock}</td>
-                        <th>{product.UnitsOnOrder}</th>
-                        <th>{product.ReorderLevel}</th>
-                        <th>{product.Discontinued}</th>
+                        <td>{product.supplierId}</td>
+                        <td>{product.categoryId}</td>
+                        <td>{product.quantityPerUnit}</td>
+                        <td>{product.unitPrice}</td>
+                        <td>{product.unitsInStock}</td>
+                        <th>{product.unitsOnOrder}</th>
+                        <th>{product.reorderLevel}</th>
+                        <th>{product.discontinued}</th>
                         
                         
                     </tr>

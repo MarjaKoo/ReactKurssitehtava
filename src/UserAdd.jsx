@@ -15,6 +15,7 @@ const [newEmail, setNewEmail] = useState('')
 const [newAccesslevelId, setNewAccesslevelId] = useState(2)
 const [newUsername, setNewUsername] = useState('')
 const [newPassword, setNewPassword] = useState ('')
+const [newPasswordAgain, setNewPasswordAgain] = useState ('')
 
 // onSubmit tapahtumakäsittelijäfunktio
 const handleSubmit = (event) => {
@@ -93,8 +94,22 @@ const handleSubmit = (event) => {
             onChange={({target}) => setNewPassword(target.value)} required/>
         </div>
 
-
+        <div>
+        <input type="password" value={newPasswordAgain} placeholder="Password again" 
+            onChange={({target}) => setNewPasswordAgain(target.value)} required/>
+        </div>
+        {newPassword !== newPasswordAgain &&
+         <p>Salasanat ei täsmää</p>
+        }
+         {newPassword === newPasswordAgain &&
+         <p>Salasanat täsmäävät</p>
+        }
+        {newPassword !== newPasswordAgain &&
+        <input type='submit' value='save' disabled/>
+}
+{newPassword === newPasswordAgain &&
         <input type='submit' value='save'/>
+}
         <input type='button' value='back' onClick={() => setLisäystila(false)} />
     </form>
   
